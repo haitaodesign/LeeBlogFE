@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.client.dev.conf.js",
-    "build": "webpack --config build/webpack.base.conf.js"
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.client.prod.conf.js"
   },
   "repository": {
     "type": "git",

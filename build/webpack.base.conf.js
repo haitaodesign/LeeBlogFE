@@ -1,8 +1,7 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack');
-const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin');
 module.exports = {
+    mode: process.env.NODE_ENV || 'production', // development || production
     target: 'web',
     entry: {
         app: path.join(__dirname, '../client/main.js')

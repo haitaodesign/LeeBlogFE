@@ -8,7 +8,6 @@ const env = require('../config/dev.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
-    mode: process.env.NODE_ENV,
     module: {
         rules: [{
             test: /\.scss$/,
@@ -31,13 +30,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': env,
+            'process.env': env,
         }),
         new HtmlWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractEextWebpackPlugin('styles.[contentHash:8].css'),
     ]
-
 })
 
 module.exports = devWebpackConfig
