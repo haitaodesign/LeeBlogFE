@@ -6,18 +6,18 @@
 </template>
 
 <script>
-import Test from "./todo/test.jsx";
+import Test from './todo/test.jsx'
 export default {
-  name: "App",
-  data() {
+  name: 'App',
+  data () {
     return {
-      test: "abc"
-    };
+      test: 'abc'
+    }
   },
   components: {
     Test
   }
-};
+}
 </script>
 
 <style scoped>
