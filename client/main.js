@@ -4,9 +4,8 @@ import App from './App.vue'
 import './assets/images/bg.jpeg'
 import './assets/styles/test.scss'
 
-const root = document.createElement('div')
-document.body.appendChild(root)
-
+/* eslint-disable no-new */
 new Vue({
+  el: '#app',
   render: (h) => h(App)
-}).$mount(root)
+})
