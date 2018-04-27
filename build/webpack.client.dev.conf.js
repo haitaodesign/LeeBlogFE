@@ -10,13 +10,13 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const devWebpackConfig = merge(baseWebpackConfig, {
     module: {
         rules: [{
-            test: /\.scss$/,
+            test: /\.styl$/,
             use: ['style-loader', 'css-loader', {
                 loader: 'postcss-loader',
                 options: {
                     sourceMap: true
                 }
-            }, 'sass-loader']
+            }, 'stylus-loader']
         }]
     },
     devServer: {

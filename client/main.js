@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import './assets/images/bg.jpeg'
-import './assets/styles/test.scss'
+import './assets/styles/test.styl'
 
 /* eslint-disable no-new */
 new Vue({

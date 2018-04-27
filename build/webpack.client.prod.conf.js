@@ -10,7 +10,7 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const prodWebpackConfig = merge(baseWebpackConfig, {
     module: {
         rules: [{
-            test: /\.scss$/,
+            test: /\.styl$/,
             use: ExtractEextWebpackPlugin.extract({
                 fallback: 'style-loader',
                 use: ['css-loader', {
@@ -18,7 +18,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
                     options: {
                         sourceMap: true
                     }
-                }, 'sass-loader']
+                }, 'stylus-loader']
             })
         }]
     },
