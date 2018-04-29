@@ -35,10 +35,10 @@ module.exports = merge(baseWebpackConfig, {
       filename: 'styles.[id].[name].css',
       allChunks: true
     }),
-    new VueServerRendererPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"server"'
-    })
+    }),
+    new VueServerRendererPlugin()
   ]
 })

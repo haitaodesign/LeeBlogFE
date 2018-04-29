@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="test">{{test}}</div>
-    <Test></Test>
+    <router-view></router-view>
   </div>
 </template>
 

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.client.dev.conf.js",
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.client.dev.conf.js",
+    "dev:server":"cross-env NODE_ENV=development node server/server.js",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.client.prod.conf.js",
     "lint": "eslint --ext .js --ext .jsx --ext .vue client/",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
@@ -67,6 +68,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue-meta": "^1.5.0",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   }
 }
