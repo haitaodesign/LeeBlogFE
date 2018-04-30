@@ -9,7 +9,7 @@ export default context => {
       if (!mathedComponents.length) {
         return reject(new Error('no component matched!'))
       }
-      context.app = app.$meta()
+      context.meta = app.$meta()
       resolve(app)
     })
   })

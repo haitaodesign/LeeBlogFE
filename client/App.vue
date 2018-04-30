@@ -8,6 +8,7 @@
 <script>
 import Test from './todo/test.jsx'
 export default {
+  metaInfo: 'leehaitao的博客',
   name: 'App',
   data () {
     return {
