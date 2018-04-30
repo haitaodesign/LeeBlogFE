@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
 const env = require('../config/prod.env')
 const baseWebpackConfig = require('./webpack.base.conf')
+const VueClientConfig = require('vue-server-renderer/client-plugin')
 
 const prodWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -37,7 +38,8 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     new ExtractEextWebpackPlugin({
       filename: 'styles.[id].[name].css',
       allChunks: true
-    })
+    }),
+    new VueClientConfig()
   ]
 })
 

@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../public'),
-    publicPath: 'http://127.0.0.1:8081/public/'
+    publicPath: '/public/'
   },
   module: {
     rules: [{
