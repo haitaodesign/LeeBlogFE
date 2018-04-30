@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.client.dev.conf.js",
-    "dev:server": "cross-env NODE_ENV=development node server/server.js",
+    "dev:server": "nodemon server/server.js",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.client.prod.conf.js",
     "lint": "eslint --ext .js --ext .jsx --ext .vue client/",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue client/",
@@ -54,6 +54,7 @@
     "koa-router": "^7.4.0",
     "koa-send": "^4.1.3",
     "memory-fs": "^0.4.1",
+    "nodemon": "^1.17.3",
     "postcss-loader": "^2.1.4",
     "style-loader": "^0.21.0",
     "stylus": "^0.54.5",
