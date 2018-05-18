@@ -6,12 +6,14 @@ import Meta from 'vue-meta'
 import App from './App.vue'
 import createStore from './store/store.js'
 import createRouter from './router/index.js'
-
-import './assets/styles/test.styl'
+import Vuetify from 'vuetify'
+import './assets/styles/main.styl'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(Meta)
+
+Vue.use(Vuetify)
 
 export default () => {
   const router = createRouter()
