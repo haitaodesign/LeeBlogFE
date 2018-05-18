@@ -1,6 +1,7 @@
 <template>
   <div>
     首页
+    <v-btn depressed small>Normal</v-btn>
   </div>
 </template>
 
