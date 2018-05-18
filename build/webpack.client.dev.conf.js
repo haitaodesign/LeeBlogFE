@@ -21,7 +21,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }]
   },
   devServer: {
-    port: 8081,
+    port: 8089,
     host: '0.0.0.0',
     // 页面上显示编译错误
     overlay: {
