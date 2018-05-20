@@ -2,6 +2,11 @@
   <div class="lee-layout">
     <div class="lee-layout-top">
       <lee-header></lee-header>
+      <div class="lee-main">
+        <router-view></router-view>
+      </div>
+      <div class="lee-footer">
+      </div>
     </div>
   </div>
 </template>

@@ -5,8 +5,7 @@
     </div>
     <div class="lee-header-right clearfix">
       <ul class="lee-header-nav clearfix">
-        <li class="lee-header-item">首页</li>
-        <li class="lee-header-item">关于</li>
+        <li class="lee-header-item" v-for="item in navlist" :key="item.id">{{item.name}}</li>
       </ul>
     </div>
   </div>
@@ -15,18 +14,25 @@
 <script>
   export default {
     name: 'leeHeader',
-    props: {
-      data: {
-        type: Array,
-        default () {
-          return []
-        }
+    data () {
+      return {
+        navlist: [
+          { id: 0, name: '首页' },
+          // { id: 1, name: '分类' },
+          // { id: 2, name: '归档' },
+          { id: 3, name: '关于' }
+        ]
+      }
+    },
+    methods: {
+      handleOnNavItemClick (e) {
       }
     }
   }
 </script>
 
 <style lang="stylus" scoped>
+@import '../../../assets/styles/variable.styl';
 .lee-header
   .lee-header-title
     float left
@@ -38,8 +44,11 @@
       text-align center
       .lee-header-item
         float left
-        list-style-type none
         height 100%
         width 80px
+        list-style-type none
+        cursor pointer
+        &:hover
+          background-color $secondary
 </style>
 
