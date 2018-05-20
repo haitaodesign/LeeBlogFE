@@ -4,13 +4,9 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import createRouter from './router/index'
 import createStore from './store/store'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import './assets/images/bg.jpeg'
 import './assets/styles/test.styl'
 
-Vue.use(Vuetify)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
