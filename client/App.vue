@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div id="test">{{test}}</div>
     <router-view></router-view>
   </div>
 </template>
@@ -12,7 +11,6 @@ export default {
   name: 'App',
   data () {
     return {
-      test: 'abc'
     }
   },
   components: {
@@ -21,8 +19,3 @@ export default {
 }
 </script>
 
-<style scoped>
-  #test {
-    color: blue;
-  }
-</style>
