@@ -10,6 +10,12 @@ module.exports = {
     path: path.join(__dirname, '../public'),
     publicPath: '/public/'
   },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, '..', 'client/components')
+    }
+  },
   module: {
     rules: [{
       test: /\.(vue|js|jsx)/,
