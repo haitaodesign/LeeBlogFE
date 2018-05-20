@@ -2,11 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import Meta from 'vue-meta'
-
-import App from './App.vue'
+import './assets/styles/normalize.styl'
+import './assets/styles/main.styl'
 import createStore from './store/store.js'
 import createRouter from './router/index.js'
-import './assets/styles/main.styl'
+import App from './App.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
