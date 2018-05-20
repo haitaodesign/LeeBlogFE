@@ -1,20 +1,14 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <index></index>
 </template>
 
 <script>
-import Test from './todo/test.jsx'
+import Index from './views/index/index.vue'
 export default {
   metaInfo: 'leehaitao的博客',
   name: 'App',
-  data () {
-    return {
-    }
-  },
   components: {
-    Test
+    Index
   }
 }
 </script>

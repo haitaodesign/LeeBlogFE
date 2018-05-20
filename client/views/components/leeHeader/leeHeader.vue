@@ -34,6 +34,7 @@
 <style lang="stylus" scoped>
 @import '../../../assets/styles/variable.styl';
 .lee-header
+  color #fff
   .lee-header-title
     float left
     width 120px
