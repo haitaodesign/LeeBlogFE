@@ -8,7 +8,7 @@ const env = require('../config/dev.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
-const devWebpackConfig = merge(baseWebpackConfig, {
+let devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [{
       test: /\.styl$/,
@@ -47,4 +47,5 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
+devWebpackConfig.resolve.alias['@model'] = path.join(__dirname, '../client/model/client-model.js')
 module.exports = devWebpackConfig

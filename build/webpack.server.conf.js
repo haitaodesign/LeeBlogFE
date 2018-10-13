@@ -6,7 +6,7 @@ const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
 const VueServerRendererPlugin = require('vue-server-renderer/server-plugin')
 const baseWebpackConfig = require('./webpack.base.conf')
 
-module.exports = merge(baseWebpackConfig, {
+let serverWebpackConfig = merge(baseWebpackConfig, {
   target: 'node',
   entry: path.join(__dirname, '../client/server-entry.js'),
   devtool: 'source-map',
@@ -42,3 +42,6 @@ module.exports = merge(baseWebpackConfig, {
     new VueServerRendererPlugin()
   ]
 })
+
+serverWebpackConfig.resolve.alias['@model'] = path.join(__dirname, '../client/model/server-model.js')
+module.exports = serverWebpackConfig

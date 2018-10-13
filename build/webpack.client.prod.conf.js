@@ -1,6 +1,6 @@
 'use strict'
-const path = require('path')
 const webpack = require('webpack')
+const path = require('path')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
@@ -42,5 +42,10 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     new VueClientConfig()
   ]
 })
+prodWebpackConfig.resolve = {
+  alias: {
+    '@model': path.join(__dirname, '../client/model/client-model.js')
+  }
+}
 
 module.exports = prodWebpackConfig

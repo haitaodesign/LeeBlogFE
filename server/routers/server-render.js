@@ -13,7 +13,8 @@ module.exports = async (ctx, renderer, template) => {
       appString,
       style: context.renderStyles(),
       scripts: context.renderScripts(),
-      title: title.text()
+      title: title.text(),
+      initalState: context.renderState()
     })
     ctx.body = html
   } catch (error) {

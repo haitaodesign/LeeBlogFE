@@ -8,12 +8,14 @@ module.exports = {
   output: {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../public'),
-    publicPath: 'http://127.0.0.1:8089/public/'
+    // publicPath: 'http://127.0.0.1:8089/public/' // 开发环境
+    publicPath: process.env.NODE_ENV === 'development' ? ('http://127.0.0.1:8089' + '/public/') : '/public/'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      '@': path.resolve(__dirname, '..', 'client/components')
+      '@': path.resolve(__dirname, '..', 'client/components'),
+      '@utils': path.resolve(__dirname, '..', 'client/utils')
     }
   },
   module: {

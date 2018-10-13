@@ -1,43 +1,12 @@
 <template>
   <div class="lee-home">
     <!-- <card v-for="item in cardlist" :key="item">{{item}}</card> -->
-    <card>
+    <card v-for="item in list" :key="item._id">
       <div class="article">
-        <h1 class="article-title">vue入门教程</h1>
-        <div class="article-createdate"><p>发布时间： 2018-05-20</p></div>
-        <div class="article-label">计划</div>
-        <div class="article-content"><p>主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘
-          要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要</p></div>
-        <div class="article-readmore">阅读全文</div>
-      </div>
-    </card>
-     <card>
-      <div class="article">
-        <h1 class="article-title">vue入门教程</h1>
-        <div class="article-createdate"><p>发布时间： 2018-05-20</p></div>
-        <div class="article-label">计划</div>
-        <div class="article-content"><p>主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘
-          要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要</p></div>
-        <div class="article-readmore">阅读全文</div>
-      </div>
-    </card>
-     <card>
-      <div class="article">
-        <h1 class="article-title">vue入门教程</h1>
-        <div class="article-createdate"><p>发布时间： 2018-05-20</p></div>
-        <div class="article-label">计划</div>
-        <div class="article-content"><p>主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘
-          要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要</p></div>
-        <div class="article-readmore">阅读全文</div>
-      </div>
-    </card>
-     <card>
-      <div class="article">
-        <h1 class="article-title">vue入门教程</h1>
-        <div class="article-createdate"><p>发布时间： 2018-05-20</p></div>
-        <div class="article-label">计划</div>
-        <div class="article-content"><p>主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘
-          要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要主要摘要</p></div>
+        <h1 class="article-title">{{ item.title }}</h1>
+        <div class="article-createdate"><p>分类：{{ item.categoryId.name}}</p></div>
+        <div class="article-label" v-for="label in item.labelId" :key="label._id">{{ label.name}}</div>
+        <div class="article-content"><p>{{ item.content}}</p></div>
         <div class="article-readmore">阅读全文</div>
       </div>
     </card>
@@ -45,13 +14,39 @@
 </template>
 
 <script>
-  import Card from '@/card/card.vue'
+  import Card from '@/Card/card.vue'
+  import { mapState, mapActions } from 'vuex'
+  import Article from '../../store/modules/article'
   export default {
     name: 'home',
     data () {
       return {
         cardlist: [1, 2, 3, 6]
       }
+    },
+    computed: {
+      ...mapState('Article', [
+        'list'
+      ])
+    },
+    mounted () {
+      if (this.list && this.list < 1) {
+        this.getArticleList()
+      }
+    },
+    asyncData ({store, router}) {
+      // return new Promise((resolve) => {
+      //   setTimeout(() => {
+      //     resolve(123)
+      //   }, 1000)
+      // })
+      store.registerModule('Article', Article)
+      return store.dispatch('Article/getArticleList')
+    },
+    methods: {
+      ...mapActions('Article', [
+        'getArticleList'
+      ])
     },
     components: {
       Card
