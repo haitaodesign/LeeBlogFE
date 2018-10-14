@@ -1,0 +1,1 @@
+export const SET_ARTICLELIST = 'SET_ARTICLELIST'

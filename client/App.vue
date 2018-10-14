@@ -1,27 +1,15 @@
 <template>
-  <div>
-    <div id="test">{{test}}</div>
-    <Test></Test>
-  </div>
+  <index></index>
 </template>
 
 <script>
-import Test from './todo/test.jsx'
+import Index from './views/index/index.vue'
 export default {
+  metaInfo: 'leehaitao的博客',
   name: 'App',
-  data () {
-    return {
-      test: 'abc'
-    }
-  },
   components: {
-    Test
+    Index
   }
 }
 </script>
 
-<style scoped>
-  #test {
-    color: blue;
-  }
-</style>
