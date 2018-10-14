@@ -7,7 +7,9 @@ import './assets/styles/main.styl'
 import createStore from './store/store.js'
 import createRouter from './router/index.js'
 import App from './App.vue'
-
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
+Vue.use(iView)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(Meta)

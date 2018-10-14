@@ -7,7 +7,7 @@
         <div class="article-createdate"><p>分类：{{ item.categoryId.name}}</p></div>
         <div class="article-label" v-for="label in item.labelId" :key="label._id">{{ label.name}}</div>
         <div class="article-content"><p>{{ item.content}}</p></div>
-        <div class="article-readmore">阅读全文</div>
+        <div class="article-readmore"><Tag>阅读全文</Tag></div>
       </div>
     </card>
   </div>

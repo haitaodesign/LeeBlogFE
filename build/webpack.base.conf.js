@@ -31,7 +31,7 @@ module.exports = {
       test: /\.jsx$/,
       loader: 'babel-loader'
     }, {
-      test: /\.(gif|jpg|jpeg|png|svg)$/,
+      test: /\.(gif|jpg|jpeg|png|svg|woff|woff2|eot|ttf)$/,
       use: [{
         loader: 'url-loader',
         options: {
@@ -39,6 +39,9 @@ module.exports = {
           name: 'resources/[path][name].[hash:8].[ext]'
         }
       }]
+    }, {
+      test: /\.css$/,
+      loader: ['vue-style-loader', 'css-loader']
     }]
   }
 }

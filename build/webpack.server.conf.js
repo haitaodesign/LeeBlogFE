@@ -20,7 +20,6 @@ let serverWebpackConfig = merge(baseWebpackConfig, {
     rules: [{
       test: /\.styl$/,
       use: ExtractEextWebpackPlugin.extract({
-        fallback: 'style-loader',
         use: ['css-loader', {
           loader: 'postcss-loader',
           options: {
