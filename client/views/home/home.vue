@@ -1,6 +1,5 @@
 <template>
   <div class="lee-home">
-    <!-- <card v-for="item in cardlist" :key="item">{{item}}</card> -->
     <card v-for="item in list" :key="item._id">
       <div class="article">
         <h1 class="article-title">{{ item.title }}</h1>
@@ -21,7 +20,6 @@
     name: 'home',
     data () {
       return {
-        cardlist: [1, 2, 3, 6]
       }
     },
     computed: {
