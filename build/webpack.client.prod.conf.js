@@ -3,24 +3,21 @@ const webpack = require('webpack')
 const path = require('path')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const env = require('../config/prod.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 const VueClientConfig = require('vue-server-renderer/client-plugin')
-
 const prodWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [{
-      test: /\.styl$/,
-      use: ExtractEextWebpackPlugin.extract({
-        fallback: 'style-loader',
-        use: ['css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true
-          }
-        }, 'stylus-loader']
-      })
+      test: /\.styl(us)?$/,
+      use: [ MiniCssExtractPlugin.loader, {
+        loader: 'css-loader'
+      }, {
+        loader: 'postcss-loader'
+      }, {
+        loader: 'stylus-loader'
+      }]
     }]
   },
   optimization: {
@@ -35,8 +32,8 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({}),
     // contenthash报错
-    new ExtractEextWebpackPlugin({
-      filename: 'styles.[id].[name].css',
+    new MiniCssExtractPlugin({
+      filename: 'styles.[name].[hash].css',
       allChunks: true
     }),
     new VueClientConfig()
