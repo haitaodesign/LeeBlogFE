@@ -3,7 +3,7 @@
     <card v-for="item in list" :key="item._id">
       <div class="article">
         <h1 class="article-title">{{ item.title }}</h1>
-        <div class="article-createdate"><p>分类：{{ item.categoryId.name}}</p></div>
+        <div class="article-createdate"><p>分类：{{ item.categoryId.name }}</p></div>
         <div class="article-label" v-for="label in item.labelId" :key="label._id">{{ label.name}}</div>
         <div class="article-content"><p>{{ item.content}}</p></div>
         <div class="article-readmore"><Tag>阅读全文</Tag></div>
@@ -28,16 +28,11 @@
       ])
     },
     mounted () {
-      if (this.list && this.list < 1) {
+      if (this.list && this.list.length < 1) {
         this.getArticleList()
       }
     },
     asyncData ({store, router}) {
-      // return new Promise((resolve) => {
-      //   setTimeout(() => {
-      //     resolve(123)
-      //   }, 1000)
-      // })
       store.registerModule('Article', Article)
       return store.dispatch('Article/getArticleList')
     },
