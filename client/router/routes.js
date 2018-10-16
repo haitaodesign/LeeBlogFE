@@ -1,12 +1,16 @@
 export default [{
   path: '/',
-  redirect: '/home'
+  redirect: '/articles'
 }, {
-  path: '/home',
-  name: '首页',
+  path: '/articles',
+  name: '文章-leehaitao',
   meta: {
-    title: 'this is app'
   },
   component: () =>
-    import('../views/home/home.vue')
+    import('../views/articles')
+}, {
+  path: '/articles/:_id',
+  name: '文章详情页',
+  component: () =>
+    import('../views/articleDetail')
 }]
