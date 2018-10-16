@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const path = require('path')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const env = require('../config/prod.env')
 const baseWebpackConfig = require('./webpack.base.conf')
@@ -13,8 +14,6 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
       test: /\.styl(us)?$/,
       use: [ MiniCssExtractPlugin.loader, {
         loader: 'css-loader'
-      }, {
-        loader: 'postcss-loader'
       }, {
         loader: 'stylus-loader'
       }]
@@ -36,7 +35,8 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
       filename: 'styles.[name].[hash].css',
       allChunks: true
     }),
-    new VueClientConfig()
+    new VueClientConfig(),
+    new VueLoaderPlugin()
   ]
 })
 prodWebpackConfig.resolve.alias['@model'] = path.join(__dirname, '../client/model/client-model.js')

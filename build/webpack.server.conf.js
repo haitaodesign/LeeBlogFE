@@ -2,7 +2,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const VueServerRendererPlugin = require('vue-server-renderer/server-plugin')
 const baseWebpackConfig = require('./webpack.base.conf')
 
@@ -18,27 +18,25 @@ let serverWebpackConfig = merge(baseWebpackConfig, {
   externals: Object.keys(require('../package.json').dependencies),
   module: {
     rules: [{
-      test: /\.styl$/,
-      use: ExtractEextWebpackPlugin.extract({
-        use: ['css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true
-          }
-        }, 'stylus-loader']
-      })
+      test: /\.styl(us)?$/,
+      use: [ {
+        loader: 'vue-style-loader'
+      }, {
+        loader: 'css-loader'
+      }, {
+        loader: 'postcss-loader'
+      }, {
+        loader: 'stylus-loader'
+      }]
     }]
   },
   plugins: [
-    new ExtractEextWebpackPlugin({
-      filename: 'styles.[id].[name].css',
-      allChunks: true
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.VUE_ENV': '"server"'
     }),
-    new VueServerRendererPlugin()
+    new VueServerRendererPlugin(),
+    new VueLoaderPlugin()
   ]
 })
 

@@ -3,6 +3,7 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const env = require('../config/dev.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 const VueClientPlugin = require('vue-server-renderer/client-plugin')
@@ -10,8 +11,8 @@ const VueClientPlugin = require('vue-server-renderer/client-plugin')
 let devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [{
-      test: /\.styl$/,
-      use: ['css-loader', {
+      test: /\.styl(us)?$/,
+      use: ['vue-style-loader', 'css-loader', {
         loader: 'postcss-loader',
         options: {
           sourceMap: true
@@ -42,7 +43,8 @@ let devWebpackConfig = merge(baseWebpackConfig, {
       inject: true
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new VueClientPlugin()
+    new VueClientPlugin(),
+    new VueLoaderPlugin()
   ]
 })
 
