@@ -2,7 +2,7 @@
   <div class="lee-home">
     <card v-for="item in list" :key="item._id">
       <div class="article">
-        <h1 class="article-title">{{ item.title }}</h1>
+        <h1 class="article-title" @click="handleClick(item._id)">{{ item.title }}</h1>
         <div class="article-createdate"><p>分类：{{ item.categoryId.name }}</p></div>
         <div class="article-label" v-for="label in item.labelId" :key="label._id">{{ label.name}}</div>
         <div class="article-content"><p>{{ item.content}}</p></div>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-  import Card from '@/Card/card.vue'
   import { mapState, mapActions } from 'vuex'
   import Article from '../../store/modules/article'
   export default {
@@ -39,10 +38,10 @@
     methods: {
       ...mapActions('Article', [
         'getArticleList'
-      ])
-    },
-    components: {
-      Card
+      ]),
+      handleClick (_id) {
+        this.$router.push({ path: 'articles/' + _id })
+      }
     }
   }
 </script>
