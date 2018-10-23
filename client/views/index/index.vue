@@ -6,9 +6,6 @@
     <div class="lee-layout-main">
         <router-view></router-view>
     </div>
-    <div class="lee-layout-footer">
-      @leehaitao
-    </div>
   </div>
 </template>
 
@@ -38,11 +35,6 @@ export default {
   margin 0 auto
   width 75%
   height 100%
-.lee-layout-footer
-  width 100%
-  height 70px
-  line-height 70px
-  text-align center
 @media screen and (max-width: 960px)
    .lee-layout-main
      width 100%
