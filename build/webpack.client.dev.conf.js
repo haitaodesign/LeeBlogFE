@@ -23,6 +23,7 @@ let devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     port: 8089,
     host: '0.0.0.0',
+    headers: {'Access-Control-Allow-Origin': '*'},
     // 页面上显示编译错误
     overlay: {
       errors: true

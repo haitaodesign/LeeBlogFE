@@ -9,6 +9,7 @@ import createRouter from './router/index.js'
 import App from './App.vue'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import './assets/styles/github-markdown.css'
 Vue.use(iView)
 Vue.use(VueRouter)
 Vue.use(Vuex)

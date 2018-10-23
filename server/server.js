@@ -26,7 +26,7 @@ app.use(async (ctx, next) => {
     }
   }
 })
-// 接口代理中间价
+// 接口代理中间件
 app.use(async (ctx, next) => {
   ctx.api = api
   await next()

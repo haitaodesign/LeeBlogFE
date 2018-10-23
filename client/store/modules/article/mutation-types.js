@@ -1,1 +1,2 @@
 export const SET_ARTICLELIST = 'SET_ARTICLELIST'
+export const SET_CONTENT = 'SET_CONTENT'

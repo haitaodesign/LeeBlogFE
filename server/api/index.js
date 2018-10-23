@@ -28,6 +28,9 @@ module.exports = () => {
   return {
     async getArticleList (data) {
       return handleRequest(await request.post('/articles', data))
+    },
+    async getArticleById (data) {
+      return handleRequest(await request.post('/article/getArticleById', data))
     }
   }
 }
