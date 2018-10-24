@@ -4,8 +4,10 @@
       <div class="article">
         <h1 class="article-title" @click="handleClick(item._id)">{{ item.title }}</h1>
         <div class="article-createdate"><p>分类：{{ item.categoryId.name }}</p></div>
-        <div class="article-label" v-for="label in item.labelId" :key="label._id">{{ label.name}}</div>
-        <div class="article-content"><p>{{ item.content}}</p></div>
+        <div class="article-label" >
+          <Tag type="border" v-for="label in item.labelId" :key="label._id">{{ label.name}}</Tag>
+        </div>
+        <div class="article-content" v-html="markedRender(item.content)"></div>
         <div class="article-readmore">
           <span @click="handleClick(item._id)">
             阅读全文
@@ -19,6 +21,7 @@
 <script>
   import { mapState, mapActions } from 'vuex'
   import Article from '../../store/modules/article'
+  import marked from 'marked'
   export default {
     name: 'home',
     data () {
@@ -45,6 +48,10 @@
       ]),
       handleClick (_id) {
         this.$router.push({ path: 'articles/' + _id })
+      },
+      markedRender (content) {
+        const abstract = content.split('<--more>')[0]
+        return marked(abstract)
       }
     }
   }
@@ -56,7 +63,7 @@
   .article
     padding 10px
     .article-title
-      color  $primary
+      // color  $primary
       cursor pointer
     .article-createdate
       color #9ea7b4
