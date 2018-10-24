@@ -13,7 +13,7 @@
 import LeeHeader from '../components/leeHeader/leeHeader.vue'
 export default {
   metaInfo: {
-    title: '我是首页'
+    title: '李海涛的博客'
   },
   name: 'home',
   components: {

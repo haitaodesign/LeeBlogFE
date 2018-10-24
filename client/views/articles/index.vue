@@ -24,6 +24,9 @@
   import marked from 'marked'
   export default {
     name: 'home',
+    metaInfo: {
+      title: '李海涛的博客——文章'
+    },
     data () {
       return {
       }

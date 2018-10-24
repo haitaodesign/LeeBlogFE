@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div>
-      <!-- <div>{{content.title}}</div> -->
-      <div class="markdown-body" v-html="this.renderMarked()">
-      </div>
+      <div class="markdown-body" v-html="renderMarked()">
     </div>
   </div>
 </template>
@@ -13,6 +10,9 @@
   import marked from 'marked'
   export default {
     name: 'articleDetail',
+    metaInfo: {
+      title: '李海涛的博客——文章详情页'
+    },
     data () {
       return {
       }
@@ -22,9 +22,12 @@
         'content'
       ])
     },
+    mounted () {
+      this.initArticleDetail()
+    },
     asyncData ({store, route}) {
-      store.registerModule('Article', Article)
       const _id = route.params._id
+      store.registerModule('Article', Article)
       return store.dispatch('Article/getArticleById', {_id})
     },
     methods: {
@@ -32,7 +35,16 @@
         'getArticleById'
       ]),
       renderMarked () {
-        return marked(this.content.content.replace('<--more>', ''))
+        if (this.content.content !== undefined) {
+          return marked(this.content.content.replace('<--more>', ''))
+        }
+      },
+      initArticleDetail () {
+        const content = this.content.content
+        if (content === undefined) {
+          const _id = this.$route.params._id
+          this.getArticleById({_id})
+        }
       }
     }
   }
