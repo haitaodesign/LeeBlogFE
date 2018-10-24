@@ -32,7 +32,7 @@
         'getArticleById'
       ]),
       renderMarked () {
-        return marked(this.content.content)
+        return marked(this.content.content.replace('<--more>', ''))
       }
     }
   }

@@ -5,7 +5,7 @@
     </div>
     <div class="lee-header-right clearfix">
       <ul class="lee-header-nav clearfix">
-        <li class="lee-header-item" v-for="item in navlist" :key="item.id">{{item.name}}</li>
+        <li class="lee-header-item" v-for="item in navlist" :key="item.id" @click="handleOnNavItemClick(item)">{{item.name}}</li>
       </ul>
     </div>
   </div>
@@ -17,7 +17,7 @@
     data () {
       return {
         navlist: [
-          { id: 0, name: '首页' },
+          { id: 0, name: '文章' },
           // { id: 1, name: '分类' },
           // { id: 2, name: '归档' },
           { id: 3, name: '关于' }
@@ -26,6 +26,12 @@
     },
     methods: {
       handleOnNavItemClick (e) {
+        const name = e.name
+        if (name === '文章') {
+          this.$router.push({path: '/articles'})
+        } else if (name === '关于') {
+          this.$Message.info('开发中。。。')
+        }
       }
     }
   }

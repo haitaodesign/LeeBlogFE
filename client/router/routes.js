@@ -3,7 +3,7 @@ export default [{
   redirect: '/articles'
 }, {
   path: '/articles',
-  name: '文章-leehaitao',
+  name: '文章',
   meta: {
   },
   component: () =>
