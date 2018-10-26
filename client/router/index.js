@@ -4,7 +4,7 @@ import routes from './routes'
 
 export default () => {
   return new Router({
-    routes,
-    mode: 'history'
+    mode: 'history',
+    routes
   })
 }
