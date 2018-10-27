@@ -23,7 +23,9 @@
       ])
     },
     mounted () {
-      this.initArticleDetail()
+      if (this.content && this.content.content === undefined) {
+        this.initArticleDetail()
+      }
     },
     asyncData ({store, route}) {
       const _id = route.params._id
