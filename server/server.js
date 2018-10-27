@@ -52,7 +52,7 @@ if (isDev) {
 app.use(pageRouter.routes()).use(pageRouter.allowedMethods())
 
 const HOST = process.env.HOST || '0.0.0.0'
-const PORT = process.env.PORT || 5555
+const PORT = process.env.PORT || 88
 console.log(HOST, PORT)
 app.listen(PORT, HOST, () => {
   console.log(`server is listening on ${HOST}:${PORT}`)
