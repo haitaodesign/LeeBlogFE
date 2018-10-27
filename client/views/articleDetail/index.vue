@@ -1,13 +1,12 @@
 <template>
   <div>
-      <div class="markdown-body" v-html="renderMarked()">
+      <div class="markdown-body" v-html="renderContent">
     </div>
   </div>
 </template>
 <script>
   import { mapState, mapActions } from 'vuex'
   import Article from '../../store/modules/article'
-  import marked from 'marked'
   export default {
     name: 'articleDetail',
     metaInfo: {
@@ -20,7 +19,10 @@
     computed: {
       ...mapState('Article', [
         'content'
-      ])
+      ]),
+      renderContent () {
+        return this.$store.state.Article.content.content
+      }
     },
     mounted () {
       if (this.content && this.content.content === undefined) {
@@ -36,11 +38,6 @@
       ...mapActions('Article', [
         'getArticleById'
       ]),
-      renderMarked () {
-        if (this.content.content !== undefined) {
-          return marked(this.content.content.replace('<--more>', ''))
-        }
-      },
       initArticleDetail () {
         const content = this.content.content
         if (content === undefined) {
