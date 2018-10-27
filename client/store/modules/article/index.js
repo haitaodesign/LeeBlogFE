@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   state: {
     list: [],
-    content: {}
+    content: ''
   },
   getters: {},
   mutations: {
@@ -25,7 +25,8 @@ export default {
     async getArticleById ({commit}, payload) {
       const { code, data } = await model.getArticleById(payload)
       if (code === 0) {
-        commit('SET_CONTENT', data)
+        const { content } = data
+        commit('SET_CONTENT', content)
       }
     }
   }

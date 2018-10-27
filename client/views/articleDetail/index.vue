@@ -1,7 +1,7 @@
 <template>
   <div>
-      <div class="markdown-body" v-html="renderContent">
-    </div>
+      <div class="markdown-body" v-html="content">
+      </div>
   </div>
 </template>
 <script>
@@ -19,13 +19,10 @@
     computed: {
       ...mapState('Article', [
         'content'
-      ]),
-      renderContent () {
-        return this.$store.state.Article.content.content
-      }
+      ])
     },
     mounted () {
-      if (this.renderContent && this.renderContent === '') {
+      if (this.content === '') {
         this.initArticleDetail()
       }
     },
@@ -39,11 +36,8 @@
         'getArticleById'
       ]),
       initArticleDetail () {
-        const content = this.content.content
-        if (content === undefined) {
-          const _id = this.$route.params._id
-          this.getArticleById({_id})
-        }
+        const _id = this.$route.params._id
+        this.getArticleById({_id})
       }
     }
   }
