@@ -25,7 +25,7 @@
       }
     },
     mounted () {
-      if (this.content && this.content.content === undefined) {
+      if (this.renderContent && this.renderContent === '') {
         this.initArticleDetail()
       }
     },
