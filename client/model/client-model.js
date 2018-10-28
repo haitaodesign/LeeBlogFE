@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { createError } from '@utils'
 const QS = require('qs')
+const env = process.env.NODE_ENV
 const request = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: env === 'development' ? 'http://localhost:3000/api' : 'http://39.108.159.185:81/api',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   },

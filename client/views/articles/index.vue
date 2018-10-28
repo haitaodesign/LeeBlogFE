@@ -50,7 +50,7 @@
         'getArticleList'
       ]),
       handleClick (_id) {
-        this.$router.push({ path: 'articles/' + _id })
+        window.open(window.location.href + '/' + _id)
       },
       markedRender (content) {
         const abstract = content.split('<--more>')[0]
