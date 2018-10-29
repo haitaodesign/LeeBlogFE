@@ -3,7 +3,7 @@ import { createError } from '@utils'
 const QS = require('qs')
 const env = process.env.NODE_ENV
 const request = axios.create({
-  baseURL: env === 'development' ? 'http://localhost:3000/api' : 'https://www.leehaitao.com/api',
+  baseURL: env === 'development' ? 'http://localhost:88/api' : 'https://www.leehaitao.com/api',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   },
@@ -22,7 +22,7 @@ const handleRequest = ({ status, data, ...rest }) => {
 
 export default {
   async getArticleList (data) {
-    return handleRequest(await request.post('/articles', data))
+    return handleRequest(await request.get('/articles', data))
   },
   async getArticleById (data) {
     return handleRequest(await request.post('/article/getArticleById', data))
