@@ -7,6 +7,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const env = require('../config/dev.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 const VueClientPlugin = require('vue-server-renderer/client-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 let devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -45,7 +46,10 @@ let devWebpackConfig = merge(baseWebpackConfig, {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new VueClientPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false // 默认不打开
+    })
   ]
 })
 
