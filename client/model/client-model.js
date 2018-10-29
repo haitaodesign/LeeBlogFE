@@ -3,7 +3,7 @@ import { createError } from '@utils'
 const QS = require('qs')
 const env = process.env.NODE_ENV
 const request = axios.create({
-  baseURL: env === 'development' ? 'http://localhost:3000/api' : 'https://39.108.159.185:88/api',
+  baseURL: env === 'development' ? 'http://localhost:3000/api' : 'https://www.leehaitao.com/api',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded'
   },
