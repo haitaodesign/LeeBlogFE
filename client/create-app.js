@@ -7,10 +7,14 @@ import './assets/styles/main.styl'
 import createStore from './store/store.js'
 import createRouter from './router/index.js'
 import App from './App.vue'
-import iView from 'iview'
+import { Button, Tag, Message, Card } from 'iview'
 import 'iview/dist/styles/iview.css'
 import './assets/styles/github-markdown.css'
-Vue.use(iView)
+Vue.component('Button', Button)
+Vue.component('Tag', Tag)
+Vue.component('Card', Card)
+Vue.prototype.$Message = Message
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(Meta)
