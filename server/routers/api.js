@@ -3,7 +3,8 @@ const Router = require('koa-router')
 const apiRouter = new Router({prefix: '/api'})
 
 apiRouter
-  .get('/articles', async (ctx) => {
+  .post('/articles', async (ctx) => {
+    console.log(ctx.request.body)
     const params = {
       current: 1,
       pageSize: 10
