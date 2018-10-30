@@ -2,7 +2,7 @@ const Koa = require('koa')
 const send = require('koa-send')
 const path = require('path')
 const koaCors = require('koa2-cors')
-
+const koaBody = require('koa-body')
 const staticRouter = require('./routers/static')
 // 创建api
 const createApi = require('./api')
@@ -14,6 +14,12 @@ const app = new Koa()
 const isDev = process.env.NODE_ENV === 'development'
 
 app.use(koaCors())
+app.use(koaBody({
+  multipart: true,
+  formidable: {
+    keepExtensions: true
+  }
+}))
 app.use(async (ctx, next) => {
   try {
     console.log(`request with path ${ctx.path}`)
