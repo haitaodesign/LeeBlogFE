@@ -11,6 +11,8 @@ before_install:
 script:
 - yarn run lint-fix
 - yarn run lint
+- yarn run build
+- yarn run upload
 after_success:
 - ssh root@39.108.159.185 'cd /usr/share/nginx/blogfe/LeeBlogFE && git pull && yarn
   && yarn run build && pm2 restart server/server.js'
