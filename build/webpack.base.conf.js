@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 module.exports = {
   mode: process.env.NODE_ENV || 'production', // development || production
   target: 'web',
@@ -10,7 +9,7 @@ module.exports = {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../public'),
     // publicPath: 'http://127.0.0.1:8089/public/' // 开发环境
-    publicPath: process.env.NODE_ENV === 'development' ? ('http://127.0.0.1:8089' + '/public/') : '/public/'
+    publicPath: process.env.NODE_ENV === 'development' ? ('http://127.0.0.1:8089' + '/public/') : 'https://static.leehaitao.com/'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
