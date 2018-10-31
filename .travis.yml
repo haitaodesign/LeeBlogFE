@@ -4,7 +4,7 @@ node_js:
 before_install:
 - openssl aes-256-cbc -K $encrypted_7dae2a5733c7_key -iv $encrypted_7dae2a5733c7_iv
   -in config.tar.enc -out config.tar -d
-- tar xvf secrets.tar
+- tar xvf config.tar
 - cp id_rsa ～/.ssh
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 39.108.159.185\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
