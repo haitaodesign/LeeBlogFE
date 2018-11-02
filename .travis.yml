@@ -16,4 +16,4 @@ script:
 after_success:
 - ssh root@39.108.159.185 'cp app.config.js /usr/share/nginx/blogfe/LeeBlogFE'
 - ssh root@39.108.159.185 'cd /usr/share/nginx/blogfe/LeeBlogFE && git pull && yarn
-  && yarn run build && pm2 restart server/server.js'
+  && yarn run build && ENABLE_NODE_LOG=YES pm2 restart server/server.js'
