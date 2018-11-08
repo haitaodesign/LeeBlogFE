@@ -37,7 +37,7 @@
       ]),
       initArticleDetail () {
         const _id = this.$route.params._id
-        this.getArticleById({_id})
+        this.getArticleById({_id, isEdit: false})
       }
     }
   }
