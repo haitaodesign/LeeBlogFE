@@ -1,18 +1,16 @@
 <template>
   <div class="lee-home">
-    <card v-for="item in list" :key="item._id">
-      <div class="article">
-        <h1 class="article-title" @click="handleClick(item._id)">{{ item.title }}</h1>
-        <div class="article-createdate"><p>分类：{{ item.categoryId.name }}</p></div>
-        <div class="article-label" >
-          <Tag type="border" v-for="label in item.labelId" :key="label._id">{{ label.name}}</Tag>
-        </div>
-        <div class="article-content" v-html="markedRender(item.content)"></div>
-        <div class="article-readmore">
-          <span @click="handleClick(item._id)">
-            阅读全文
-          </span>
-        </div>
+    <card v-for="item in list" :key="item._id" class="article">
+      <h1 class="article-title" @click="handleClick(item._id)">{{ item.title }}</h1>
+      <div class="article-createdate"><p>分类：{{ item.categoryId.name }}</p></div>
+      <div class="article-label" >
+        <Tag type="border" v-for="label in item.labelId" :key="label._id">{{ label.name}}</Tag>
+      </div>
+      <div class="article-content" v-html="markedRender(item.content)"></div>
+      <div class="article-readmore">
+        <span @click="handleClick(item._id)">
+          阅读全文
+        </span>
       </div>
     </card>
   </div>
@@ -64,9 +62,8 @@
 .lee-home
   padding 10px
   .article
-    padding 10px
+    margin-top 10px
     .article-title
-      // color  $primary
       cursor pointer
     .article-createdate
       color #9ea7b4

@@ -1,2 +1,4 @@
 export const SET_ARTICLELIST = 'SET_ARTICLELIST'
 export const SET_CONTENT = 'SET_CONTENT'
+export const SET_UPDATEAT = 'SET_UPDATEAT'
+export const SET_CREATEAT = 'SET_CREATEAT'

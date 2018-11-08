@@ -1,7 +1,13 @@
 <template>
-  <div>
-      <div class="markdown-body" v-html="content">
+  <div class="mardkown">
+    <div class="markdown-body">
+      <div v-html="content">
       </div>
+      <div class="markdwon-footer">
+        <p>作者<a href=""><code>李海涛</code></a>发表于<i>{{createAt}}</i>，最后修改于<i>{{updateAt}}</i></p>
+        <p>本文章由leehaitao.com首发，转载请注明出处。</p>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -18,7 +24,9 @@
     },
     computed: {
       ...mapState('Article', [
-        'content'
+        'content',
+        'updateAt',
+        'createAt'
       ])
     },
     mounted () {
@@ -29,7 +37,7 @@
     asyncData ({store, route}) {
       const _id = route.params._id
       store.registerModule('Article', Article)
-      return store.dispatch('Article/getArticleById', {_id})
+      return store.dispatch('Article/getArticleById', {_id, isEdit: false})
     },
     methods: {
       ...mapActions('Article', [
