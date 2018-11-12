@@ -27,6 +27,12 @@
     },
     data () {
       return {
+        params: {
+          current: 1,
+          pageSize: 10,
+          categoryId: '',
+          labelId: ''
+        }
       }
     },
     computed: {
@@ -36,12 +42,12 @@
     },
     mounted () {
       if (this.list && this.list.length < 1) {
-        this.getArticleList()
+        this.getArticleList(this.params)
       }
     },
     asyncData ({store, router}) {
       store.registerModule('Article', Article)
-      return store.dispatch('Article/getArticleList')
+      return store.dispatch('Article/getArticleList', this.params)
     },
     methods: {
       ...mapActions('Article', [

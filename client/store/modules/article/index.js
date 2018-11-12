@@ -24,8 +24,8 @@ export default {
     }
   },
   actions: {
-    async getArticleList ({commit}) {
-      const { code, data } = await model.getArticleList()
+    async getArticleList ({commit}, payload) {
+      const { code, data } = await model.getArticleList(payload)
       if (code === 0) {
         commit('SET_ARTICLELIST', data)
       }

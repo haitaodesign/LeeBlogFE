@@ -22,7 +22,7 @@ const handleRequest = ({ status, data, ...rest }) => {
 
 export default {
   async getArticleList (data) {
-    return handleRequest(await request.post('/articles', { page: 1 }))
+    return handleRequest(await request.post('/articles', data))
   },
   async getArticleById (data) {
     return handleRequest(await request.post('article/getArticleById', data))
