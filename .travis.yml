@@ -14,8 +14,9 @@ script:
 - npm run lint-fix
 - npm run lint
 - npm run build
+- npm prune
 - tar -cvjpf LeeBlogFE.tar.bz2 *
 after_success:
-- scp LeeBlogFE.tar.bz2 root@39.108.159.185:/usr/share/nginx/blogadmin/LeeBlogFE
+- scp LeeBlogFE.tar.bz2 root@39.108.159.185:/usr/share/nginx/blogfe/LeeBlogFE
 - ssh root@39.108.159.185 'cd /usr/share/nginx/blogfe/LeeBlogFE && tar -xjf LeeBlogFE.tar.bz2 && yarn run upload &&
   ENABLE_NODE_LOG=YES pm2 restart server/server.js'
