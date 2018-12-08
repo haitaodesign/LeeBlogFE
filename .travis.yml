@@ -16,6 +16,6 @@ script:
 - npm run build
 - tar -cvjpf LeeBlogFE.tar.bz2 *
 after_success:
-- ssh root@39.108.159.185 'cp LeeBlogFE.tar.bz2 /usr/share/nginx/blogfe/LeeBlogFE'
+- scp LeeBlogFE.tar.bz2 root@39.108.159.185:/usr/share/nginx/blogadmin/LeeBlogFE
 - ssh root@39.108.159.185 'cd /usr/share/nginx/blogfe/LeeBlogFE && tar -xjf LeeBlogFE.tar.bz2 && yarn run upload &&
   ENABLE_NODE_LOG=YES pm2 restart server/server.js'
