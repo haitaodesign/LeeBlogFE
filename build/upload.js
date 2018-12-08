@@ -1,9 +1,10 @@
 const qiniu = require('qiniu')
 const fs = require('fs')
 const path = require('path')
+const ACMClient = require('acm-client').ACMClient
 
-const cdnConfig = require('../app.config.js')
-const { ak, sk, bucket } = cdnConfig.cdn
+const AcmConfig = require('../app.config.js')
+const acmConfig = AcmConfig.acm
 class UploadQN {
   constructor (bucket, ak, sk) {
     this.bucket = bucket
@@ -48,7 +49,13 @@ class UploadQN {
     })
   }
 }
-
 const publicPath = path.join(__dirname, '../public')
-const upload = new UploadQN(bucket, ak, sk)
-upload.doAllFileUpload(publicPath)
+const acm = new ACMClient(acmConfig)
+const initAcm = async () => {
+  const content = await acm.getConfig('test-acm', 'DEFAULT_GROUP')
+  const { qiniu } = JSON.parse(content)
+  const upload = new UploadQN(qiniu.bucket, qiniu.ak, qiniu.sk)
+  upload.doAllFileUpload(publicPath)
+  acm.close()
+}
+initAcm()
