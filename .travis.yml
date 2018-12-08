@@ -8,8 +8,9 @@ before_install:
 - cp id_rsa ~/.ssh
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 39.108.159.185\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-script:
+install:
 - npm i
+script:
 - npm run lint-fix
 - npm run lint
 - npm run build
