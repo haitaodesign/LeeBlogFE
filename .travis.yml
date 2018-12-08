@@ -11,7 +11,8 @@ before_install:
 script:
 - yarn run lint-fix
 - yarn run lint
+- tar -cvjpf LeeBlogFE.tar.bz2 *
 after_success:
-- ssh root@39.108.159.185 'cp app.config.js /usr/share/nginx/blogfe/LeeBlogFE'
-- ssh root@39.108.159.185 'cd /usr/share/nginx/blogfe/LeeBlogFE && git pull && yarn
-  && yarn run build && ENABLE_NODE_LOG=YES pm2 restart server/server.js'
+- ssh root@39.108.159.185 'cp LeeBlogFE.tar.bz2 /usr/share/nginx/blogfe/LeeBlogFE'
+- ssh root@39.108.159.185 'cd /usr/share/nginx/blogfe/LeeBlogFE && tar -xjf LeeBlogFE.tar.bz2 &&
+  ENABLE_NODE_LOG=YES pm2 restart server/server.js'
