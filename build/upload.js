@@ -52,9 +52,9 @@ class UploadQN {
 const publicPath = path.join(__dirname, '../public')
 const acm = new ACMClient(acmConfig)
 const initAcm = async () => {
-  const content = await acm.getConfig('test-acm', 'DEFAULT_GROUP')
-  const { qiniu } = JSON.parse(content)
-  const upload = new UploadQN(qiniu.bucket, qiniu.ak, qiniu.sk)
+  const content = await acm.getConfig('LeeBlog', 'DEFAULT_GROUP')
+  const { bucket, ak, sk } = JSON.parse(content).qiniu.static
+  const upload = new UploadQN(bucket, ak, sk)
   upload.doAllFileUpload(publicPath)
   acm.close()
 }
