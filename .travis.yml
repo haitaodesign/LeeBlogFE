@@ -14,7 +14,6 @@ script:
 - npm run lint-fix
 - npm run lint
 - npm run build
-- npm prune
 - tar -cvjpf LeeBlogFE.tar.bz2 *
 after_success:
 - scp LeeBlogFE.tar.bz2 root@39.108.159.185:/usr/share/nginx/blogfe/LeeBlogFE
