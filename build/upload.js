@@ -56,5 +56,6 @@ const initAcm = async () => {
   const { qiniu } = JSON.parse(content)
   const upload = new UploadQN(qiniu.bucket, qiniu.ak, qiniu.sk)
   upload.doAllFileUpload(publicPath)
+  acm.close()
 }
 initAcm()
